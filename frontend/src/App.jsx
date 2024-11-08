@@ -5,8 +5,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import Header from "./pages/header";
 import { useState } from "react";
+import Landing from "./pages/landing/landing";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" Component={Header} />
+        <Route path="/" Component={Landing} />
       </Routes>
     </Router>
   );
