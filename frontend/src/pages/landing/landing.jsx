@@ -12,6 +12,8 @@ import MobileHeader from "./mobileheader";
 import Header from "./header";
 import TrendingEvents from "./trending-slider";
 import ConcertSlider from "./concert-slider";
+import ShowsSlider from "./shows-slider";
+import { motion } from "framer-motion";
 
 export default function Landing() {
   return (
@@ -21,7 +23,7 @@ export default function Landing() {
         {/* Header */}
         <Header />
         {/* Hero Section */}
-        <section className="relative h-[89vh]">
+        <section className="relative h-[85vh]">
           <img
             src="https://i.imgur.com/JuBUG8B.jpeg"
             alt="Concert Venue"
@@ -32,7 +34,7 @@ export default function Landing() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/40" />
 
           <div className="absolute inset-0 flex flex-col items-center px-4 md:px-20">
-            <div className="text-center max-w-4xl mx-auto mt-32 md:mt-40 animate-fade-in-down">
+            <div className="text-center max-w-4xl mx-auto mt-32 md:mt-28 animate-fade-in-down">
               <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-slide-up">
                 One click away
               </h1>
@@ -120,7 +122,73 @@ export default function Landing() {
           </div>
         </section> */}
         <TrendingEvents />
-        < ConcertSlider />
+        <ConcertSlider />
+        <ShowsSlider />
+
+        <div className="bg-black/90 min-h-[400px] w-full relative overflow-hidden">
+          <div className="max-w-[1200px] mx-auto px-6 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Left content - with adjusted left margin */}
+              <div className="pl-8 md:pl-12">
+                <div className="inline-flex items-center bg-gray-800/50 rounded-full px-4 py-1.5 mb-5">
+                  <span className="flex h-2 w-2 rounded-full bg-red-500 mr-2"></span>
+                  <span className="text-sm text-white"></span>
+                  <span className="text-sm ml-2 text-gray-300">
+                    Let’s Get Those Tickets Sold
+                  </span>
+                </div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-4xl md:text-5xl font-bold text-white mb-4"
+                >
+                  Selling Tickets Has Never Been This Easy!
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-gray-300 text-lg mb-6"
+                >
+                  Lower fees, higher reach – let's sell out together.
+                </motion.p>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg text-base font-medium transition-colors"
+                >
+                  Sell Now!
+                </motion.button>
+              </div>
+
+              {/* Right content - with increased card height */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="flex justify-center"
+              >
+                <div className="bg-white p-3 rounded-xl shadow-lg min-h-[320px] w-[320px] flex flex-col items-center justify-center">
+                  <img
+                    src="/assets/images/trending/event1.jpg"
+                    alt="Exciting Event"
+                    className="w-full h-72 object-cover rounded-md "
+                  />
+                  <div className="flex flex-col items-center text-center">
+                    {/* <p className="text-center font-medium text-indigo-500 text-lg mb-2">
+        Make Memories That Last
+      </p> */}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Add these styles to your CSS */}

@@ -1,110 +1,269 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 
 const ConcertSlider = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    const concerts = [
-        {
-            id: 1,
-            title: "Summer Rock Festival",
-            artist: "Various Artists",
-            venue: "Central Park Arena",
-            date: "2024-06-15",
-            time: "18:00",
-            image: "/assets/images/trending/event4.jpg",
-        },
-        {
-            id: 2,
-            title: "Jazz Night",
-            artist: "Jazz Ensemble",
-            venue: "Blue Note Club",
-            date: "2024-06-20",
-            time: "20:00",
-            image: "/assets/images/trending/event4.jpg",
-        },
-        // Add more concerts as needed
-    ];
+  const events = [
+    {
+      id: 1,
+      title: "Sidhu Moosewala",
+      date: "Nov 17, 7:00 PM",
+      venue: "Venue to be announced : Ahmedabad",
+      price: "₹2988 onwards",
+      image: "/assets/images/trending/event1.jpg",
+      month: "NOV",
+      day: "17",
+    },
+    {
+      id: 2,
+      title: "Event Title",
+      date: "Dec 31, 6:30 PM",
+      venue: "Venue to be announced : Ahmedabad",
+      price: "₹1800 onwards",
+      image: "/assets/images/trending/event2.jpg",
+      month: "DEC",
+      day: "31",
+    },
+    {
+      id: 3,
+      title: "Event Title",
+      date: "Feb 1, 7:00 PM",
+      venue: "Venue To Be Announced: Pune",
+      price: "₹1999 onwards",
+      image: "/assets/images/trending/event3.jpg",
+      month: "FEB",
+      day: "1",
+    },
+    {
+      id: 3,
+      title: "Event Title",
+      date: "Feb 1, 7:00 PM",
+      venue: "Venue To Be Announced: Mumbai",
+      price: "₹1999 onwards",
+      image: "  /assets/images/trending/event4.jpg",
+      month: "FEB",
+      day: "1",
+    },
+    {
+      id: 3,
+      title: "Event Title",
+      date: "Feb 1, 7:00 PM",
+      venue: "Venue To Be Announced: Pune",
+      price: "₹1999 onwards",
+      image: "/assets/images/trending/event5.jpg",
+      month: "FEB",
+      day: "1",
+    },
+  ];
 
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === concerts.length - 1 ? 0 : prevIndex + 1
-        );
-    };
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % events.length);
+  };
 
-    useEffect(() => {
-        const timer = setInterval(nextSlide, 5000);
-        return () => clearInterval(timer);
-    }, []);
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + events.length) % events.length);
+  };
 
-    return (
-        <div className="relative w-full overflow-hidden h-[500px]">
-            <div className="absolute w-full h-full">
-                {concerts.map((concert, index) => (
-                    <motion.div
-                        key={concert.id}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{
-                            opacity: index === currentIndex ? 1 : 0,
-                            x: index === currentIndex ? 0 : 100,
-                        }}
-                        transition={{ duration: 0.5 }}
-                        className={`absolute top-0 left-0 w-full h-full ${
-                            index === currentIndex ? 'z-10' : 'z-0'
-                        }`}
-                    >
-                        <div className="relative w-full h-full">
-                            <img
-                                src={concert.image}
-                                alt={concert.title}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                                <div className="container mx-auto">
-                                    <h2 className="text-white text-3xl md:text-4xl font-bold mb-2">
-                                        {concert.title}
-                                    </h2>
-                                    <p className="text-gray-300 text-xl mb-2">{concert.artist}</p>
-                                    <div className="flex flex-col md:flex-row md:items-center gap-4 text-white">
-                                        <div className="flex items-center">
-                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                            </svg>
-                                            <span>{concert.venue}</span>
-                                        </div>
-                                        <div className="flex items-center">
-                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                            </svg>
-                                            <span>{new Date(concert.date).toLocaleDateString()}</span>
-                                        </div>
-                                        <div className="flex items-center">
-                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                                            </svg>
-                                            <span>{concert.time}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="py-16 bg-black/90">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-white mb-8">Top Selling Concerts
+        </h2>
+
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
+
+          {/* Slider */}
+          <div className="flex gap-6 overflow-hidden">
+            {events.map((event, index) => {
+              const isActive = index === currentSlide;
+              const offset =
+                (index - currentSlide + events.length) % events.length;
+
+              return (
+                <div
+                  key={event.id}
+                  className={`flex-none w-full md:w-[calc(33.333%-1rem)] transform transition-all duration-500 ease-out`}
+                  style={{
+                    transform: `translateX(-${currentSlide * 100}%)`,
+                    opacity: isActive ? 1 : 0.9,
+                    scale: isActive ? "1" : "0.95",
+                  }}
+                >
+                  <div className="bg-white rounded-lg overflow-hidden hover:bg-white/85 transition-all duration-300 cursor-pointer group">
+                    {/* Price Tag */}
+                    <div className="absolute top-4 left-4 bg-white/90 text-black px-3 py-1 rounded-full text-sm font-medium z-10">
+                      {event.price}
+                    </div>
+
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {/* Date Badge */}
+                      <div className="absolute bottom-4 left-4 bg-white text-black px-3 py-2 rounded-lg">
+                        <div className="text-xs font-medium text-red-500">
+                          {event.month}
                         </div>
-                    </motion.div>
-                ))}
-            </div>
-            
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
-                {concerts.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                            index === currentIndex ? 'bg-white' : 'bg-white/50'
-                        }`}
-                    />
-                ))}
-            </div>
+                        <div className="text-xl font-bold">{event.day}</div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-black text-xl font-bold mb-4 line-clamp-1">
+                        {event.title}
+                      </h3>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center text-gray-900">
+                          <Clock className="w-4 h-4 mr-2" />
+                          <span className="text-sm">{event.date}</span>
+                        </div>
+                        <div className="flex items-center text-gray-900">
+                          <MapPin className="w-4 h-4 mr-2" />
+                          <span className="text-sm">{event.venue}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {events.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? "bg-red-500 w-6" : "bg-gray-500"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-    );
+      </div>
+    </section>
+    //   <section className="py-16 bg-white">
+    //   <div className="max-w-7xl mx-auto px-4">
+    //     <h2 className="text-3xl font-bold text-black mb-8">Trending Events</h2>
+
+    //     <div className="relative">
+    //       {/* Navigation Buttons */}
+    //       <button
+    //         onClick={prevSlide}
+    //         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+    //       >
+    //         <ChevronLeft className="w-6 h-6 text-black" />
+    //       </button>
+
+    //       <button
+    //         onClick={nextSlide}
+    //         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+    //       >
+    //         <ChevronRight className="w-6 h-6 text-black" />
+    //       </button>
+
+    //       {/* Slider */}
+    //       <div className="flex gap-6 overflow-hidden">
+    //         {events.map((event, index) => {
+    //           const isActive = index === currentSlide;
+    //           const offset = ((index - currentSlide) + events.length) % events.length;
+
+    //           return (
+    //             <div
+    //               key={event.id}
+    //               className={`flex-none w-full md:w-[calc(33.333%-1rem)] transform transition-all duration-500 ease-out`}
+    //               style={{
+    //                 transform: `translateX(-${currentSlide * 100}%)`,
+    //                 opacity: isActive ? 1 : 0.7,
+    //                 scale: isActive ? '1' : '0.95'
+    //               }}
+    //             >
+    //               <div className="bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300 cursor-pointer group ">
+    //                 {/* Price Tag */}
+    //                 <div className="absolute top-4 left-4 bg-white/90 text-black px-3 py-1 rounded-full text-sm font-medium z-10">
+    //                   {event.price}
+    //                 </div>
+
+    //                 {/* Image */}
+    //                 <div className="relative h-48 overflow-hidden">
+    //                   <img
+    //                     src={event.image}
+    //                     alt={event.title}
+    //                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+    //                   />
+    //                   {/* Date Badge */}
+    //                   <div className="absolute bottom-4 left-4 bg-white text-black px-3 py-2 rounded-lg">
+    //                     <div className="text-xs font-medium text-red-500">{event.month}</div>
+    //                     <div className="text-xl font-bold">{event.day}</div>
+    //                   </div>
+    //                 </div>
+
+    //                 {/* Content */}
+    //                 <div className="p-6">
+    //                   <h3 className="text-black text-xl font-bold mb-4 line-clamp-1">
+    //                     {event.title}
+    //                   </h3>
+
+    //                   <div className="space-y-2">
+    //                     <div className="flex items-center text-black-300">
+    //                       <Clock className="w-4 h-4 mr-2" />
+    //                       <span className="text-sm">{event.date}</span>
+    //                     </div>
+    //                     <div className="flex items-center text-black-300">
+    //                       <MapPin className="w-4 h-4 mr-2" />
+    //                       <span className="text-sm">{event.venue}</span>
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           );
+    //         })}
+    //       </div>
+
+    //       {/* Dots */}
+    //       <div className="flex justify-center mt-6 space-x-2">
+    //         {events.map((_, index) => (
+    //           <button
+    //             key={index}
+    //             onClick={() => setCurrentSlide(index)}
+    //             className={`w-2 h-2 rounded-full transition-all duration-300 ${
+    //               index === currentSlide ? 'bg-red-500 w-6' : 'bg-gray-500'
+    //             }`}
+    //           />
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+  );
 };
 
 export default ConcertSlider;
