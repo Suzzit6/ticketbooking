@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Header = () => {
+
+const Header = ({setIsLoginOpen}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -57,10 +58,10 @@ const Header = () => {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
-            <button className="text-white hover:text-red-400 px-3 py-2 text-sm font-medium transition-colors duration-300">
+            <button onClick={setIsLoginOpen} className="text-white hover:text-red-400 px-3 py-2 text-sm font-medium transition-colors duration-300">
               SELL
             </button>
-            <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105">
+            <button onClick={setIsLoginOpen} className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105">
               SIGN IN
             </button>
           </div>
