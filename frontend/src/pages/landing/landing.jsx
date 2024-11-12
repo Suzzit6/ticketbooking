@@ -26,7 +26,7 @@ axios.defaults.withCredentials = true;
 
 export default function Landing() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
- 
+
   return (
     <GoogleOAuthProvider clientId={googleClientID}>
       <div className="w-full">
@@ -34,19 +34,17 @@ export default function Landing() {
           isOpen={isLoginOpen}
           onClose={() => setIsLoginOpen(false)}
         />
-        <div className="min-h-screen">
-          <MobileHeader />
+        <div className="min-h-screen bg-black/90">
           {/* Header */}
           <Header setIsLoginOpen={setIsLoginOpen} />
           {/* Hero Section */}
-          <section className="relative h-[85vh]">
+          {/* <section className="relative h-[75vh]">
             <img
               src="https://i.imgur.com/JuBUG8B.jpeg"
               alt="Concert Venue"
               className="w-full h-full object-cover"
             />
 
-            {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/40" />
 
             <div className="absolute inset-0 flex flex-col items-center px-4 md:px-20">
@@ -72,78 +70,65 @@ export default function Landing() {
                 </div>
               </div>
             </div>
-          </section>
-          {/* <section className="max-w-7xl mx-auto py-8 md:py-12 px-4">
-          <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4 mb-6 md:mb-8">
-            <h2 className="text-xl md:text-2xl font-bold flex items-center">
-              <span className="text-red-500 mr-2">★</span>
-              HOT EVENTS
-            </h2>
-            <div className="flex overflow-x-auto pb-2 md:pb-0 space-x-4">
-              <button className="text-sm md:text-base text-red-500 whitespace-nowrap">
-                ALL
-              </button>
-              <button className="text-sm md:text-base hover:text-red-500 whitespace-nowrap">
-                CONCERTS
-              </button>
-              <button className="text-sm md:text-base hover:text-red-500 whitespace-nowrap">
-                SHOWS
-              </button>
-            </div>
-          </div>
+          </section> */}
+          <section className="relative h-[60vh] flex justify-center">
+            <img
+              src="https://i.imgur.com/JuBUG8B.jpeg"
+              alt="Stadium"
+              className="w-full md:w-4/5 h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/40" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            <div className="col-span-1 md:row-span-2">
-              <img
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"
-                alt="Adele"
-                className="w-full h-64 md:h-full object-cover rounded"
-              />
-              <div className="mt-2">
-                <h3 className="font-semibold">Adele</h3>
-                <p className="text-sm text-gray-600">
-                  Say Hello to Adele On Tour in 2016!
-                </p>
-              </div>
-            </div>
-            {[
-              {
-                src: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
-                title: "New York Rangers",
-              },
-              {
-                src: "https://images.unsplash.com/photo-1579546929662-711aa81148cf",
-                title: "The Lion King",
-              },
-              {
-                src: "https://images.unsplash.com/photo-1558522195-e1201b090344",
-                title: "Zac Brown",
-              },
-              {
-                src: "https://images.unsplash.com/photo-1562077772-3bd90403f7f0",
-                title: "Yankees",
-              },
-            ].map((item, index) => (
-              <div key={index}>
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-48 object-cover rounded"
-                />
-                <div className="mt-2">
-                  <h3 className="font-semibold">{item.title}</h3>
+            <div className="absolute inset-0 flex flex-col items-center">
+              <div className="max-w-5xl w-full mx-auto px-4 flex flex-col items-center">
+                <div className="text-center mt-24">
+                  <h1 className="text-white text-4xl md:text-5xl font-bold mb-2">
+                    One click away
+                  </h1>
+                  <p className="text-white text-lg md:text-xl font-medium">
+                    from the time of your life!
+                  </p>
+                </div>
+
+                <div className="w-full max-w-xl mt-8">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="What do you want to see live?"
+                      className="w-full p-3 pr-12 rounded-lg text-base outline-none shadow-lg"
+                    />
+                    <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                      <svg
+                        className="w-5 h-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </section> */}
+            </div>
+          </section>
+          {/* </div> */}
+
           <TrendingEvents />
           <ConcertSlider />
           <ShowsSlider />
 
           <div className="bg-black/90 min-h-[400px] w-full relative overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-6 py-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" onClick={setIsLoginOpen}>
+              <div
+                className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                onClick={setIsLoginOpen}
+              >
                 {/* Left content - with adjusted left margin */}
                 <div className="pl-8 md:pl-12">
                   <div className="inline-flex items-center bg-gray-800/50 rounded-full px-4 py-1.5 mb-5">

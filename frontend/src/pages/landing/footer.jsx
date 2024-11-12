@@ -17,8 +17,6 @@ const Footer = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUpVariant}
-            transition={{ duration: 0.5 }}
           >
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-red-500">LOGO</h3>
@@ -45,8 +43,6 @@ const Footer = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUpVariant}
-            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
@@ -65,8 +61,6 @@ const Footer = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUpVariant}
-            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h4 className="text-lg font-semibold mb-4">Support</h4>
             <ul className="space-y-3">
@@ -85,8 +79,6 @@ const Footer = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUpVariant}
-            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-4">
@@ -111,8 +103,6 @@ const Footer = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUpVariant}
-          transition={{ duration: 0.5, delay: 0.4 }}
           className="border-t border-gray-800 pt-8 mt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
