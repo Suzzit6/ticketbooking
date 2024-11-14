@@ -31,7 +31,7 @@ const Header = ({ setIsLoginOpen }) => {
     <div className="max-w-6xl mx-auto">
       <div className="flex  justify-between h-16">
         <div className="flex items-center space-x-8">
-          <span className="text-red-500 text-2xl font-bold hover:text-red-500 transition-colors duration-300">
+          <span className="text-red-500 text-3xl font-bold hover:text-red-500 transition-colors duration-300">
             DEUCE
           </span>
           <nav className="hidden md:flex space-x-5">

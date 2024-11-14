@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
+import CustomArrow from "../../utils/arrow";
 
 const ShowsSlider = () => {
   const events = [
@@ -66,8 +67,8 @@ const ShowsSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 8000,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <CustomArrow direction="next" top={"top-48"}  />,
+    prevArrow: <CustomArrow direction="prev" top={"top-48"}  />,
     appendDots: (dots) => (
       <div>
         <ul className="slick-dots">{dots}</ul>

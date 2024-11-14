@@ -9,7 +9,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black/80 text-white pt-16 pb-8">
+    <footer className="bg-black/70 text-white pt-16 pb-8">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -19,7 +19,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-red-500">LOGO</h3>
+              <h3 className="text-2xl font-bold text-red-500">DEUCE</h3>
               <p className="text-gray-400 mt-4">Your one-stop platform for hassle-free event ticketing with the lowest fees guaranteed.</p>
             </div>
             <div className="flex space-x-4">
@@ -107,7 +107,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 LOGO. All rights reserved.
+              © 2024 DEUCE. All rights reserved.
             </p>
             <div className="flex items-center space-x-4">
               <img src="/api/placeholder/60/32" alt="Payment Method" className="h-8" />

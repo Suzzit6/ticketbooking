@@ -3,9 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
-import { i } from "framer-motion/client";
+import CustomArrow from "../../utils/arrow";
+
 
 const TrendingEvents = () => {
+  
   const events = [
     {
       id: 1,
@@ -105,8 +107,9 @@ const TrendingEvents = () => {
     autoplaySpeed: 8000,
     pauseOnHover: false,
     pauseOnFocus: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <CustomArrow direction="next" top={"top-1/2"} />,
+    prevArrow: <CustomArrow direction="prev" top={"top-1/2"} />,
+    // className: "relative",
     appendDots: (dots) => (
       <div>
         <ul className="slick-dots">{dots}</ul>
@@ -132,6 +135,11 @@ const TrendingEvents = () => {
       },
     ],
   };
+  const customStyles = `
+  .slick-prev, .slick-next {
+    display: none !important;
+  }
+`;
 
   return (
     // <section className="py-8 bg-black">
@@ -209,7 +217,7 @@ const TrendingEvents = () => {
     //     </Slider>
     //   </div>
     // </section>
-    <section className="py-6 bg-black">
+    <section className="py-6 bg-black/40">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-white">Trending Events</h2>
@@ -244,11 +252,11 @@ const TrendingEvents = () => {
                       height="150" // example height
                     />
                   </div>
-                  <div className="p-2">
-                    <h3 className="text-white text-base font-medium mb-0.5 line-clamp-1">
+                  <div className="p-2 bg-white">
+                    <h3 className="text-black text-base font-medium mb-0.5 line-clamp-1">
                       {item.title}
                     </h3>
-                    <p className="text-gray-400 text-sm">{item.date}</p>
+                    <p className="text-black text-sm">{item.date}</p>
                   </div>
                 </div>
               </div>
@@ -259,13 +267,12 @@ const TrendingEvents = () => {
     </section>
   );
 };
-
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <button
-      className={`${className} absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300`}
-      style={{ ...style }}
+      className={`${className} !absolute !right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 transition-all duration-300 shadow-md`}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     >
       <ChevronRight className="w-6 h-6 text-black" />
@@ -277,8 +284,8 @@ const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <button
-      className={`${className} absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 backdrop-blur-sm transition-all duration-300`}
-      style={{ ...style }}
+      className={`${className} !absolute !left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 transition-all duration-300 shadow-md`}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     >
       <ChevronLeft className="w-6 h-6 text-black" />

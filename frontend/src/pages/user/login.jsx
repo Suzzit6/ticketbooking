@@ -48,16 +48,16 @@ const LoginPopup = ({ isOpen, onClose }) => {
               <X size={20} />
             </button>
 
-            {/* Logo */}
+            {/* DEUCE */}
             <div className="mb-8 ">
-              <img src="/api/placeholder/120/40" alt="Logo" className="h-10" />
+              <img src="/api/placeholder/120/40" alt="DEUCE" className="h-10" />
             </div>
 
             {currentStep === "options" && (
               <>
                 {/* Title */}
                 <h2 className="text-2xl font-bold text-gray-900 mb-8 flex justify-center">
-                  Login or Sign up to Logo
+                  Login or Sign up to DEUCE
                 </h2>
 
                 {/* Google Sign In */}
@@ -95,7 +95,7 @@ const LoginPopup = ({ isOpen, onClose }) => {
               
                 {/* Title */}
                 <h2 className="text-2xl font-bold text-gray-900 mb-8 flex justify-center">
-                  Login or Sign up to Logo
+                  Login or Sign up to DEUCE
                 </h2>
 
                 {/* {Input for entering email address and a continue btn in red } */}
