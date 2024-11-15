@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import MobileHeader from "./mobileheader";
+import { useUser } from "../../context/authprovider";
 
 const Header = ({ setIsLoginOpen }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { userAuth } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,13 +37,13 @@ const Header = ({ setIsLoginOpen }) => {
             DEUCE
           </span>
           <nav className="hidden md:flex space-x-2">
-            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-medium">
+            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-normal">
               Home
             </a>
-            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-medium">
+            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-normal">
               Concerts
             </a>
-            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-medium">
+            <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-normal">
               Shows
             </a>
           </nav>

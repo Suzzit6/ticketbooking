@@ -124,4 +124,13 @@ router.get("/api/user/verify-login/:token", async (req, res) => {
   }
 });
 
+router.get("/api/auth/user",(req,res)=>{
+  const userinfo = Authorize()
+  if (!req.user) {
+    console.log("no user");
+  }
+  // console.log("user ",req.user)
+    res.json({user:req.user})
+})
+
 module.exports = router;
