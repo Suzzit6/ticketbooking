@@ -34,7 +34,7 @@ const Header = ({ setIsLoginOpen }) => {
           <span className="text-red-500 text-3xl font-bold hover:text-red-500 transition-colors duration-300">
             DEUCE
           </span>
-          <nav className="hidden md:flex space-x-5">
+          <nav className="hidden md:flex space-x-2">
             <a href="#" className="text-white hover:text-red-400 px-2 py-1 text-base font-medium">
               Home
             </a>

@@ -19,6 +19,7 @@ import LoginPopup from "../user/login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 
+
 const googleClientID =
   "613011644713-8ulrf00dkg201cq3bc4r5855ed2a1qv8.apps.googleusercontent.com";
 const googleSecret = "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";
@@ -29,6 +30,7 @@ export default function Landing() {
 
   return (
     <GoogleOAuthProvider clientId={googleClientID}>
+      
       <div className="w-full">
         <LoginPopup
           isOpen={isLoginOpen}

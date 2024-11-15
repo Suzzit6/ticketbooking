@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GoogleOAuth } from "./googleAuth";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const LoginPopup = ({ isOpen, onClose }) => {
   const [currentStep, setCurrentStep] = useState("options");
@@ -12,18 +13,19 @@ const LoginPopup = ({ isOpen, onClose }) => {
 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
-    // const response = await axios.post("http://localhost:6900/api/user/email-auth", {
-    //   email: email,
-    // });
-    // console.log(response);
+    console.log(email);
+    const response = await axios.post("http://localhost:6900/api/user/auth", {
+      email: email,
+    });
+    console.log(response);
     setCurrentStep("resendEmail");
   };
   const handleResendEmail = async (e) => {
     e.preventDefault();
-    // const response = await axios.post("http://localhost:6900/api/user/email-auth", {
-    //   email: email,
-    // });
-    // console.log(response);
+    const response = await axios.post("http://localhost:6900/api/user/auth", {
+      email: email,
+    });
+    console.log(response);
   };
   return (
     <AnimatePresence>
@@ -42,7 +44,10 @@ const LoginPopup = ({ isOpen, onClose }) => {
           >
             {/* Close Button */}
             <button
-              onClick={() => {onClose(); setCurrentStep("options")} }
+              onClick={() => {
+                onClose();
+                setCurrentStep("options");
+              }}
               className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <X size={20} />
@@ -92,7 +97,6 @@ const LoginPopup = ({ isOpen, onClose }) => {
             )}
             {currentStep === "email" && (
               <>
-              
                 {/* Title */}
                 <h2 className="text-2xl font-bold text-gray-900 mb-8 flex justify-center">
                   Login or Sign up to DEUCE

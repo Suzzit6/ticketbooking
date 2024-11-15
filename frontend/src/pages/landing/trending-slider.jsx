@@ -1,14 +1,14 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import CustomArrow from "../../utils/arrow";
-
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const TrendingEvents = () => {
   
-  const events = [
+  const initialEvents  = [
     {
       id: 1,
       title: "Sidhu Moosewala",
@@ -60,6 +60,31 @@ const TrendingEvents = () => {
       day: "1",
     },
   ];
+
+  const [events, setEvents] = useState(initialEvents);
+  const [hasMore, setHasMore] = useState(true);
+
+  const fetchMoreEvents = () => {
+    const newEvents = [
+      {
+        id: events.length + 1,
+        title: "New Event Title",
+        date: "Mar 10, 7:00 PM",
+        venue: "Venue To Be Announced",
+        price: "₹1500 onwards",
+        image: "/assets/images/trending/event3.jpg",
+        month: "MAR",
+        day: "10",
+      },
+      // Add more events dynamically
+    ];
+
+    setEvents((prevEvents) => [...prevEvents, ...newEvents]);
+
+    if (events.length > 20) { // limit for testing
+      setHasMore(false);
+    }
+  };
 
   // const settings = {
   //   dots: true,
@@ -239,6 +264,12 @@ const TrendingEvents = () => {
         </div>
 
         <div className=" -mx-2">
+        {/* <InfiniteScroll
+        dataLength={events.length}
+        next={fetchMoreEvents}
+        hasMore={hasMore}
+        endMessage={<p>No more events available</p>}
+      > */}
           <Slider {...settings}>
             {events.map((item) => (
               <div key={item.id} className="px-1.5">
@@ -262,6 +293,7 @@ const TrendingEvents = () => {
               </div>
             ))}
           </Slider>
+          {/* </InfiniteScroll> */}
         </div>
       </div>
     </section>
