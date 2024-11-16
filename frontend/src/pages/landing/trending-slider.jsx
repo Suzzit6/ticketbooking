@@ -245,7 +245,7 @@ const TrendingEvents = () => {
     <section className="py-6 bg-black/40">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">Trending Events</h2>
+          <h2 className="text-2xl font-bold text-white">Trending Events</h2>
           {/* <div className="flex items-center space-x-2">
             <span className="text-white text-xs">1 of 4</span>
             <div className="flex space-x-1">
@@ -278,16 +278,17 @@ const TrendingEvents = () => {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover rounded-lg"
-                      width="250" // example width
-                      height="150" // example height
+                      className="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-500"
+                      width="250" 
+                      height="150" 
                     />
                   </div>
-                  <div className="p-2 bg-white">
-                    <h3 className="text-black text-base font-medium mb-0.5 line-clamp-1">
+                  <div className="p-2 bg-black/5 rounded-lg ">
+                    <h3 className="text-white text-lg font-bold mb-0.5 line-clamp-1">
                       {item.title}
                     </h3>
-                    <p className="text-black text-sm">{item.date}</p>
+                    <p className="text-gray-400 text-sm">{item.date}</p>
+                    <p className="text-gray-400 text-sm">{item.price}</p>
                   </div>
                 </div>
               </div>

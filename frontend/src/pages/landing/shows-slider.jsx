@@ -67,8 +67,8 @@ const ShowsSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 8000,
-    nextArrow: <CustomArrow direction="next" top={"top-48"}  />,
-    prevArrow: <CustomArrow direction="prev" top={"top-48"}  />,
+    nextArrow: <CustomArrow direction="next" top={"top-48"} />,
+    prevArrow: <CustomArrow direction="prev" top={"top-48"} />,
     appendDots: (dots) => (
       <div>
         <ul className="slick-dots">{dots}</ul>
@@ -150,8 +150,6 @@ const ShowsSlider = () => {
     </section>
   );
 };
-
-
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
