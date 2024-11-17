@@ -183,7 +183,7 @@ const Header = ({ setIsLoginOpen }) => {
                           >
                             <a
                               href="#"
-                              className="px-4 py-3 flex items-center space-x-3 hover:bg-gray-50 transition-colors duration-150"
+                              className=" px-4 py-3 flex items-center space-x-3 hover:bg-gray-50 transition-colors duration-150"
                             >
                               <span className="text-gray-400 group-hover:text-red-400 transition-colors duration-150">
                                 {item.icon}
