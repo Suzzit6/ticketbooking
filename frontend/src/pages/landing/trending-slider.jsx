@@ -1,20 +1,19 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import CustomArrow from "../../utils/arrow";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const TrendingEvents = () => {
-  
-  const initialEvents  = [
+  const initialEvents = [
     {
       id: 1,
       title: "Sidhu Moosewala",
-      date: "Nov 17, 7:00 PM",
+      date: "Nov 17",
       venue: "Venue to be announced : Ahmedabad",
-      price: "₹2988 onwards",
+      price: "From ₹2988 ",
       image: "/assets/images/trending/event1.jpg",
       month: "NOV",
       day: "17",
@@ -22,9 +21,9 @@ const TrendingEvents = () => {
     {
       id: 2,
       title: "Event Title",
-      date: "Dec 31, 6:30 PM",
+      date: "Dec 31",
       venue: "Venue to be announced : Ahmedabad",
-      price: "₹1800 onwards",
+      price: "From ₹1800 ",
       image: "/assets/images/trending/event2.jpg",
       month: "DEC",
       day: "31",
@@ -32,9 +31,9 @@ const TrendingEvents = () => {
     {
       id: 3,
       title: "Event Title",
-      date: "Feb 1, 7:00 PM",
+      date: "Feb 1",
       venue: "Venue To Be Announced: Pune",
-      price: "₹1999 onwards",
+      price: "From ₹1999 ",
       image: "/assets/images/trending/event3.jpg",
       month: "FEB",
       day: "1",
@@ -42,9 +41,9 @@ const TrendingEvents = () => {
     {
       id: 4,
       title: "Event Title",
-      date: "Feb 1, 7:00 PM",
+      date: "Feb 1",
       venue: "Venue To Be Announced: Mumbai",
-      price: "₹1999 onwards",
+      price: "From ₹1999 ",
       image: "/assets/images/trending/event4.jpg",
       month: "FEB",
       day: "1",
@@ -52,9 +51,9 @@ const TrendingEvents = () => {
     {
       id: 5,
       title: "Event Title",
-      date: "Feb 1, 7:00 PM",
+      date: "Feb 1",
       venue: "Venue To Be Announced: Pune",
-      price: "₹1999 onwards",
+      price: "From ₹1999 ",
       image: "/assets/images/trending/event5.jpg",
       month: "FEB",
       day: "1",
@@ -69,7 +68,7 @@ const TrendingEvents = () => {
       {
         id: events.length + 1,
         title: "New Event Title",
-        date: "Mar 10, 7:00 PM",
+        date: "Mar 10",
         venue: "Venue To Be Announced",
         price: "₹1500 onwards",
         image: "/assets/images/trending/event3.jpg",
@@ -81,7 +80,8 @@ const TrendingEvents = () => {
 
     setEvents((prevEvents) => [...prevEvents, ...newEvents]);
 
-    if (events.length > 20) { // limit for testing
+    if (events.length > 20) {
+      // limit for testing
       setHasMore(false);
     }
   };
@@ -132,8 +132,8 @@ const TrendingEvents = () => {
     autoplaySpeed: 8000,
     pauseOnHover: false,
     pauseOnFocus: false,
-    nextArrow: <CustomArrow direction="next" top={"top-1/2"} />,
-    prevArrow: <CustomArrow direction="prev" top={"top-1/2"} />,
+    nextArrow: <CustomArrow direction="next" top={"top-1/3"} />,
+    prevArrow: <CustomArrow direction="prev" top={"top-1/3"} />,
     // className: "relative",
     appendDots: (dots) => (
       <div>
@@ -243,7 +243,8 @@ const TrendingEvents = () => {
     //   </div>
     // </section>
     <section className="py-6 bg-black/40">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="mx-auto px-4" style={{ maxWidth: "75rem" }}>
+        {" "}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-white">Trending Events</h2>
           {/* <div className="flex items-center space-x-2">
@@ -262,25 +263,18 @@ const TrendingEvents = () => {
             </div>
           </div> */}
         </div>
-
         <div className=" -mx-2">
-        {/* <InfiniteScroll
-        dataLength={events.length}
-        next={fetchMoreEvents}
-        hasMore={hasMore}
-        endMessage={<p>No more events available</p>}
-      > */}
           <Slider {...settings}>
             {events.map((item) => (
-              <div key={item.id} className="px-1.5">
+              <div key={item.id} className="px-2.5">
                 <div className="relative group">
-                  <div className="aspect-[4/3] relative">
+                  <div className="aspect-auto relative">
                     <img
                       src={item.image}
                       alt={item.title}
                       className="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-500"
-                      width="250" 
-                      height="150" 
+                      width="250"
+                      height="150"
                     />
                   </div>
                   <div className="p-2 bg-black/5 rounded-lg ">
@@ -294,7 +288,6 @@ const TrendingEvents = () => {
               </div>
             ))}
           </Slider>
-          {/* </InfiniteScroll> */}
         </div>
       </div>
     </section>

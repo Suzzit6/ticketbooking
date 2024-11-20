@@ -99,7 +99,7 @@ const Header = ({ setIsLoginOpen }) => {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4"
       style={{
-        backgroundColor: scrollPosition > 50 ? "rgb(34,35,39)" : "transparent",
+        backgroundColor: scrollPosition > 50 ? "black" : "transparent",
         backdropFilter: scrollPosition > 50 ? "blur(8px)" : "none",
       }}
     >
@@ -109,22 +109,22 @@ const Header = ({ setIsLoginOpen }) => {
             <span className="text-red-500 text-3xl font-bold hover:text-red-500 transition-colors duration-300">
               DEUCE
             </span>
-            <nav className="hidden md:flex space-x-2">
+            <nav className="hidden md:flex space-x-1">
               <a
                 href="#"
-                className="text-white hover:text-red-400 px-2 py-1 text-base font-normal"
+                className="text-white hover:text-red-400 px-2 py-1 text-base font-medium"
               >
                 Home
               </a>
               <a
                 href="#"
-                className="text-white hover:text-red-400 px-2 py-1 text-base font-normal"
+                className="text-white hover:text-red-400 px-2 py-1 text-base font-medium"
               >
                 Concerts
               </a>
               <a
                 href="#"
-                className="text-white hover:text-red-400 px-2 py-1 text-base font-normal"
+                className="text-white hover:text-red-400 px-2 py-1 text-base font-medium"
               >
                 Shows
               </a>
